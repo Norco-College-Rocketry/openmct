@@ -86,6 +86,7 @@ import UTCTimeSystem from './utcTimeSystem/plugin.js';
 import ViewDatumAction from './viewDatumAction/plugin.js';
 import ViewLargeAction from './viewLargeAction/plugin.js';
 import WebPagePlugin from './webPage/plugin.js';
+import Mqtt from '../../ncr/Mqtt.js';
 
 /**
  * @type {Object}
@@ -176,5 +177,6 @@ plugins.Gauge = GaugePlugin;
 plugins.Timelist = TimeList;
 plugins.InspectorViews = InspectorViews;
 plugins.InspectorDataVisualization = InspectorDataVisualization;
+plugins.Mqtt = Mqtt;
 
 export default plugins;
