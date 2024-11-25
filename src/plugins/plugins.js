@@ -87,6 +87,7 @@ import ViewDatumAction from './viewDatumAction/plugin.js';
 import ViewLargeAction from './viewLargeAction/plugin.js';
 import WebPagePlugin from './webPage/plugin.js';
 import Mqtt from '../../ncr/Mqtt.js';
+import Influx from '../../ncr/Influx.js';
 import Olivine from '../../ncr/olivine.js';
 
 /**
@@ -179,6 +180,7 @@ plugins.Timelist = TimeList;
 plugins.InspectorViews = InspectorViews;
 plugins.InspectorDataVisualization = InspectorDataVisualization;
 plugins.Mqtt = Mqtt;
+plugins.Influx = Influx;
 plugins.Olivine = Olivine;
 
 export default plugins;
