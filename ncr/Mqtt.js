@@ -1,8 +1,9 @@
 import MQTT from 'paho-mqtt';
+import { v4 as uuidv4 } from 'uuid';
 
 let topics = {};
 
-let client = new MQTT.Client(location.hostname, 8081, 'openmct');
+let client = new MQTT.Client(location.hostname, 8081, 'openmct_' + uuidv4());
 client.connected = false;
 
 client.onConnectionLost = function (response) {
