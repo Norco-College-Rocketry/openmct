@@ -1,6 +1,7 @@
 import { InfluxDB } from '@influxdata/influxdb-client';
 
-const url = 'http://localhost:8086';
+// TODO make these settings environment variables
+const url = location.origin.replace(location.port, '8086');
 const api_key =
   'OUtmOTO1jlUUrYyY0LnnwA6HzYB6I28v_CJY_s92dsRB-_RfQ57S9RuJRn3NGTo1DzyTmQMK3mxoThAJhLkLpg==';
 const org = 'a21246dfbe93707a';
