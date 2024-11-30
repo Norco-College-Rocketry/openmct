@@ -8,6 +8,7 @@ client.connected = false;
 
 client.onConnectionLost = function (response) {
   console.log('Disconnected from broker: ' + response.errorMessage);
+  client.connected = false;
 };
 // TODO delegate callbacks
 client.onMessageArrived = function (message) {
