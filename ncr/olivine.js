@@ -1,5 +1,5 @@
-const data = {
-  name: 'Olivine',
+const valkyrie_metadata = {
+  name: 'Valkyrie',
   key: 'vehicle',
   measurements: [
     {
@@ -243,12 +243,12 @@ const objectProvider = {
     if (identifier.key === 'vehicle') {
       return Promise.resolve({
         identifier: identifier,
-        name: data.name,
+        name: valkyrie_metadata.name,
         type: 'folder',
         location: 'ROOT'
       });
     } else {
-      const measurement = data.measurements.filter((m) => m.key === identifier.key)[0];
+      const measurement = valkyrie_metadata.measurements.filter((m) => m.key === identifier.key)[0];
       return Promise.resolve({
         identifier: identifier,
         name: measurement.name,
@@ -268,7 +268,7 @@ const compositionProvider = {
     domainObject.identifier.namespace === 'ncr' && domainObject.type === 'folder',
   load: (domainObject) =>
     Promise.resolve(
-      data.measurements.map((m) => {
+      valkyrie_metadata.measurements.map((m) => {
         return {
           namespace: 'ncr',
           key: m.key
