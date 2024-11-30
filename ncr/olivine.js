@@ -201,7 +201,40 @@ const data = {
           }
         }
       ]
-    }
+    },
+    {
+      name: 'Command',
+      key: 'command',
+      topic: 'commands/#',
+      no_influx: true,
+      values: [
+        {
+          key: 'command',
+          name: 'Command',
+          format: 'string',
+          hints: {
+            range: 1
+          }
+        },
+        {
+          key: 'value',
+          name: 'Parameters',
+          format: 'string',
+          hints: {
+            range: 2
+          }
+        },
+        {
+          key: 'utc',
+          source: 'timestamp',
+          name: 'Timestamp',
+          format: 'utc',
+          hints: {
+            domain: 1
+          }
+        }
+      ]
+    },
   ]
 };
 

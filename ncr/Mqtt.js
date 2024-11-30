@@ -13,7 +13,19 @@ client.onConnectionLost = function (response) {
 // TODO delegate callbacks
 client.onMessageArrived = function (message) {
   // Adapt as an OpenMCT domain object
-  let datum = JSON.parse(message.payloadString);
+  let datum = {};
+  try {
+    datum = JSON.parse(message.payloadString);
+    if (message.topic.startsWith('commands')) {
+      datum.value = datum.command;
+      datum.command = message.topic.substring(8);
+      datum.timestamp = Date.now();
+      message.topic = 'commands/#';
+    }
+  } catch (SyntaxError) {
+    datum = { command: message.payloadString, value: 'N/A', timestamp: Date.now() };
+    message.topic = 'commands/#';
+  }
   datum.identifier = topics[message.topic].identifier;
   datum.timestamp = parseFloat(datum.timestamp);
 
