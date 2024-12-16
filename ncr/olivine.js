@@ -235,6 +235,31 @@ const valkyrie_metadata = {
         }
       ]
     },
+    {
+      name: 'Sine Wave',
+      key: 'sinewave',
+      topic: 'telemetry/sinewave',
+      no_influx: true,
+      values: [
+        {
+          key: 'value',
+          name: 'Sine Wave',
+          format: 'float',
+          hints: {
+            range: 1
+          }
+        },
+        {
+          key: 'utc',
+          source: 'timestamp',
+          name: 'Timestamp',
+          format: 'utc',
+          hints: {
+            domain: 1
+          }
+        }
+      ]
+    }
   ]
 };
 

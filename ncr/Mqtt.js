@@ -23,9 +23,15 @@ client.onMessageArrived = function (message) {
       message.topic = 'commands/#';
     }
   } catch (SyntaxError) {
-    datum = { command: message.payloadString, value: 'N/A', timestamp: Date.now() };
-    message.topic = 'commands/#';
+    if (message.topic.startsWith('commands')) {
+      datum = { command: message.payloadString, value: 'N/A', timestamp: Date.now() };
+      message.topic = 'commands/#';
+    } else {
+      console.error("Error parsing JSON payload from MQTT topic " + message.topic);
+    }
   }
+  console.log(topics);
+  console.log(message);
   datum.identifier = topics[message.topic].identifier;
   datum.timestamp = parseFloat(datum.timestamp);
 
