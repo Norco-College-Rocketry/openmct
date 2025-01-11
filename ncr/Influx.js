@@ -10,8 +10,7 @@ const bucket = 'valkyrie';
 const queryApi = client.getQueryApi(org);
 
 let influxProvider = {
-  //TODO pass namespace, use custom type, or find a better way to determine check support
-  supportsRequest: (domainObject, options) => domainObject.identifier.namespace === 'ncr',
+  supportsRequest: (domainObject, options) => !domainObject.telemetry.no_influx ?? true,
   request: (domainObject, options) => {
     const splits = domainObject.identifier.key.split('.');
     // floor'd and ceil'd becuase range() can't take floating point timestamps. See https://docs.influxdata.com/flux/v0/stdlib/universe/range/

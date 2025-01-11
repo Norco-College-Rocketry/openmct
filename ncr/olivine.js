@@ -1,5 +1,5 @@
-const valkyrie_metadata = {
-  name: 'Valkyrie',
+const olivine_metadata = {
+  name: 'Olivine',
   key: 'vehicle',
   measurements: [
     {
@@ -201,6 +201,64 @@ const valkyrie_metadata = {
           }
         }
       ]
+    },
+    {
+      name: 'Command',
+      key: 'command',
+      topic: 'commands/#',
+      no_influx: true,
+      values: [
+        {
+          key: 'command',
+          name: 'Command',
+          format: 'string',
+          hints: {
+            range: 1
+          }
+        },
+        {
+          key: 'parameters',
+          name: 'Parameters',
+          format: 'string',
+          hints: {
+            range: 2
+          }
+        },
+        {
+          key: 'utc',
+          source: 'timestamp',
+          name: 'Timestamp',
+          format: 'utc',
+          hints: {
+            domain: 1
+          }
+        }
+      ]
+    },
+    {
+      name: 'Sine Wave',
+      key: 'sinewave',
+      topic: 'telemetry/sinewave',
+      no_influx: true,
+      values: [
+        {
+          key: 'value',
+          name: 'Sine Wave',
+          format: 'float',
+          hints: {
+            range: 1
+          }
+        },
+        {
+          key: 'utc',
+          source: 'timestamp',
+          name: 'Timestamp',
+          format: 'utc',
+          hints: {
+            domain: 1
+          }
+        }
+      ]
     }
   ]
 };
@@ -210,12 +268,12 @@ const objectProvider = {
     if (identifier.key === 'vehicle') {
       return Promise.resolve({
         identifier: identifier,
-        name: valkyrie_metadata.name,
+        name: olivine_metadata.name,
         type: 'folder',
         location: 'ROOT'
       });
     } else {
-      const measurement = valkyrie_metadata.measurements.filter((m) => m.key === identifier.key)[0];
+      const measurement = olivine_metadata.measurements.filter((m) => m.key === identifier.key)[0];
       return Promise.resolve({
         identifier: identifier,
         name: measurement.name,
@@ -235,7 +293,7 @@ const compositionProvider = {
     domainObject.identifier.namespace === 'ncr' && domainObject.type === 'folder',
   load: (domainObject) =>
     Promise.resolve(
-      valkyrie_metadata.measurements.map((m) => {
+      olivine_metadata.measurements.map((m) => {
         return {
           namespace: 'ncr',
           key: m.key

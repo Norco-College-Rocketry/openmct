@@ -1,9 +1,12 @@
 import MQTT from 'paho-mqtt';
 import { v4 as uuidv4 } from 'uuid';
 
+const HOST = location.hostname;
+const PORT = 8081;
+
 let topics = {};
 
-let client = new MQTT.Client(location.hostname, 8081, 'openmct_' + uuidv4());
+let client = new MQTT.Client(HOST, PORT, 'openmct_' + uuidv4());
 client.connected = false;
 
 client.onConnectionLost = function (response) {
@@ -13,7 +16,18 @@ client.onConnectionLost = function (response) {
 // TODO delegate callbacks
 client.onMessageArrived = function (message) {
   // Adapt as an OpenMCT domain object
-  let datum = JSON.parse(message.payloadString);
+  let datum = {};
+  try {
+    datum = JSON.parse(message.payloadString);
+    if (message.topic === 'commands') {
+      datum.timestamp = Date.now();
+      message.topic = 'commands/#';
+    }
+  } catch (SyntaxError) {
+    console.error("Error parsing JSON payload from MQTT topic " + message.topic);
+  }
+  console.log(topics);
+  console.log(message);
   datum.identifier = topics[message.topic].identifier;
   datum.timestamp = parseFloat(datum.timestamp);
 
