@@ -19,8 +19,11 @@ client.onMessageArrived = function (message) {
   let datum = {};
   try {
     datum = JSON.parse(message.payloadString);
-    if (message.topic === 'commands') {
+    if ('timestamp' in datum === false) {
       datum.timestamp = Date.now();
+    }
+
+    if (message.topic === 'commands') {
       message.topic = 'commands/#';
     }
   } catch (SyntaxError) {
