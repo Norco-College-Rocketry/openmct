@@ -3,65 +3,15 @@ const olivine_metadata = {
   key: 'vehicle',
   measurements: [
     {
-      name: 'Injector Temperature',
-      key: 'injector.temperature',
-      topic: 'telemetry/injector/temperature',
-      values: [
-        {
-          key: 'value',
-          name: 'Temperature',
-          format: 'float',
-          unit: 'F',
-          hints: {
-            range: 1
-          }
-        },
-        {
-          key: 'utc',
-          source: 'timestamp',
-          name: 'Timestamp',
-          format: 'utc',
-          hints: {
-            domain: 1
-          }
-        }
-      ]
-    },
-    {
-      name: 'Injector Pressure',
-      key: 'injector.pressure',
-      topic: 'telemetry/injector/pressure',
+      name: 'Chamber Pressure',
+      key: 'chamber.pressure',
+      topic: 'telemetry/chamber/pressure',
       values: [
         {
           key: 'value',
           name: 'Pressure',
           format: 'float',
           unit: 'psi',
-          hints: {
-            range: 1
-          }
-        },
-        {
-          key: 'utc',
-          source: 'timestamp',
-          name: 'Timestamp',
-          format: 'utc',
-          hints: {
-            domain: 1
-          }
-        }
-      ]
-    },
-    {
-      name: 'Vent Temperature',
-      key: 'vent.temperature',
-      topic: 'telemetry/vent/temperature',
-      values: [
-        {
-          key: 'value',
-          name: 'Temperature',
-          format: 'float',
-          unit: 'F',
           hints: {
             range: 1
           }
@@ -86,7 +36,7 @@ const olivine_metadata = {
           key: 'value',
           name: 'Temperature',
           format: 'float',
-          unit: 'F',
+          unit: 'C',
           hints: {
             range: 1
           }
@@ -103,9 +53,9 @@ const olivine_metadata = {
       ]
     },
     {
-      name: 'Tank Pressure',
-      key: 'tank.pressure',
-      topic: 'telemetry/tank/pressure',
+      name: 'Supply Pressure',
+      key: 'supply.pressure',
+      topic: 'telemetry/supply/pressure',
       values: [
         {
           key: 'value',
@@ -128,9 +78,9 @@ const olivine_metadata = {
       ]
     },
     {
-      name: 'Feed Pressure',
-      key: 'feed.pressure',
-      topic: 'telemetry/feed/pressure',
+      name: 'Tank Fuel Pressure',
+      key: 'fuel.pressure',
+      topic: 'telemetry/tank/fuel/pressure',
       values: [
         {
           key: 'value',
@@ -153,13 +103,63 @@ const olivine_metadata = {
       ]
     },
     {
-      name: 'Load Cell 1',
+      name: 'Tank Oxidizer Pressure',
+      key: 'oxidizer.pressure',
+      topic: 'telemetry/tank/oxidizer/pressure',
+      values: [
+        {
+          key: 'value',
+          name: 'Pressure',
+          format: 'float',
+          unit: 'psi',
+          hints: {
+            range: 1
+          }
+        },
+        {
+          key: 'utc',
+          source: 'timestamp',
+          name: 'Timestamp',
+          format: 'utc',
+          hints: {
+            domain: 1
+          }
+        }
+      ]
+    },
+    {
+      name: 'Tank Vent Temperature',
+      key: 'vent.temperature',
+      topic: 'telemetry/tank/vent/temprerature',
+      values: [
+        {
+          key: 'value',
+          name: 'Temperature',
+          format: 'float',
+          unit: 'C',
+          hints: {
+            range: 1
+          }
+        },
+        {
+          key: 'utc',
+          source: 'timestamp',
+          name: 'Timestamp',
+          format: 'utc',
+          hints: {
+            domain: 1
+          }
+        }
+      ]
+    },
+    {
+      name: 'Tank Weight 1',
       key: 'weight.1',
-      topic: 'telemetry/weight/1',
+      topic: 'telemetry/tank/weight/1',
       values: [
         {
           key: 'value',
-          name: 'Weight/Thrust',
+          name: 'Weight',
           format: 'float',
           unit: 'kg',
           hints: {
@@ -178,15 +178,90 @@ const olivine_metadata = {
       ]
     },
     {
-      name: 'Load Cell 2',
+      name: 'Tank Weight 2',
       key: 'weight.2',
-      topic: 'telemetry/weight/2',
+      topic: 'telemetry/tank/weight/2',
       values: [
         {
           key: 'value',
-          name: 'Weight/Thrust',
+          name: 'Weight',
           format: 'float',
           unit: 'kg',
+          hints: {
+            range: 1
+          }
+        },
+        {
+          key: 'utc',
+          source: 'timestamp',
+          name: 'Timestamp',
+          format: 'utc',
+          hints: {
+            domain: 1
+          }
+        }
+      ]
+    },
+      {
+      name: 'Tank Weight 3',
+      key: 'weight.3',
+      topic: 'telemetry/tank/weight/3',
+      values: [
+        {
+          key: 'value',
+          name: 'Weight',
+          format: 'float',
+          unit: 'kg',
+          hints: {
+            range: 1
+          }
+        },
+        {
+          key: 'utc',
+          source: 'timestamp',
+          name: 'Timestamp',
+          format: 'utc',
+          hints: {
+            domain: 1
+          }
+        }
+      ]
+    },
+    {
+      name: 'Tank Weight 4',
+      key: 'weight.4',
+      topic: 'telemetry/tank/weight/4',
+      values: [
+        {
+          key: 'value',
+          name: 'Weight',
+          format: 'float',
+          unit: 'kg',
+          hints: {
+            range: 1
+          }
+        },
+        {
+          key: 'utc',
+          source: 'timestamp',
+          name: 'Timestamp',
+          format: 'utc',
+          hints: {
+            domain: 1
+          }
+        }
+      ]
+    },
+    {
+      name: 'Thrust',
+      key: 'thrust',
+      topic: 'telemetry/thrust',
+      values: [
+        {
+          key: 'value',
+          name: 'Thrust',
+          format: 'float',
+          unit: 'N',
           hints: {
             range: 1
           }
