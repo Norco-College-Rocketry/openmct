@@ -3,10 +3,10 @@ import { InfluxDB } from '@influxdata/influxdb-client';
 // TODO make these settings environment variables
 const url = location.origin.replace(location.port, '8086');
 const api_key =
-  'OUtmOTO1jlUUrYyY0LnnwA6HzYB6I28v_CJY_s92dsRB-_RfQ57S9RuJRn3NGTo1DzyTmQMK3mxoThAJhLkLpg==';
-const org = 'a21246dfbe93707a';
+  'p51TyZBdN8xZqPF5lHIwfLZhxvU0SDMKShoB6jh1eCmncyaD7coVOaz-CzAuIf2R0ORVeNLP4EWFzAZfeCZcwA==';
+const org = '729f7d55908a096c';
 const client = new InfluxDB({ url: url, token: api_key });
-const bucket = 'valkyrie';
+const bucket = 'olivine';
 const queryApi = client.getQueryApi(org);
 
 let influxProvider = {
