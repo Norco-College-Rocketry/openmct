@@ -29,8 +29,6 @@ client.onMessageArrived = function (message) {
   } catch (SyntaxError) {
     console.error('Error parsing JSON payload from MQTT topic ' + message.topic);
   }
-  console.log(topics);
-  console.log(message);
   datum.identifier = topics[message.topic].identifier;
   datum.timestamp = parseFloat(datum.timestamp);
 
