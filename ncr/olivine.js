@@ -130,7 +130,7 @@ const olivine_metadata = {
     {
       name: 'Tank Vent Temperature',
       key: 'vent.temperature',
-      topic: 'telemetry/tank/vent/temprerature',
+      topic: 'telemetry/tank/vent/temperature',
       values: [
         {
           key: 'value',
