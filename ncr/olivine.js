@@ -78,6 +78,31 @@ const olivine_metadata = {
       ]
     },
     {
+      name: 'Tank Pressure',
+      key: 'tank.pressure',
+      topic: 'telemetry/tank/pressure',
+      values: [
+        {
+          key: 'value',
+          name: 'Pressure',
+          format: 'float',
+          unit: 'psi',
+          hints: {
+            range: 1
+          }
+        },
+        {
+          key: 'utc',
+          source: 'timestamp',
+          name: 'Timestamp',
+          format: 'utc',
+          hints: {
+            domain: 1
+          }
+        }
+      ]
+    },
+    {
       name: 'Tank Fuel Pressure',
       key: 'fuel.pressure',
       topic: 'telemetry/tank/fuel/pressure',
@@ -262,6 +287,56 @@ const olivine_metadata = {
           name: 'Thrust',
           format: 'float',
           unit: 'N',
+          hints: {
+            range: 1
+          }
+        },
+        {
+          key: 'utc',
+          source: 'timestamp',
+          name: 'Timestamp',
+          format: 'utc',
+          hints: {
+            domain: 1
+          }
+        }
+      ]
+    },
+    {
+      name: 'Voltage',
+      key: 'voltage',
+      topic: 'telemetry/voltage',
+      values: [
+        {
+          key: 'value',
+          name: 'Voltage',
+          format: 'float',
+          unit: 'V',
+          hints: {
+            range: 1
+          }
+        },
+        {
+          key: 'utc',
+          source: 'timestamp',
+          name: 'Timestamp',
+          format: 'utc',
+          hints: {
+            domain: 1
+          }
+        }
+      ]
+    },
+    {
+      name: 'Current',
+      key: 'current',
+      topic: 'telemetry/current',
+      values: [
+        {
+          key: 'value',
+          name: 'Current',
+          format: 'float',
+          unit: 'A',
           hints: {
             range: 1
           }
